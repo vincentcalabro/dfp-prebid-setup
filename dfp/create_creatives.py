@@ -58,10 +58,41 @@ def create_creative_config(name, advertiser_id):
   if bidder_params is True:
     hb_adid_key += '_' + bidder_code
 
+    hb_cache_host_key = 'hb_cache_host_' + bidder_code
+    hb_cache_path_key = 'hb_cache_path_' + bidder_code
+    hb_cache_id_key = 'hb_cache_id_' + bidder_code
+    hb_format_key = 'hb_format_' + bidder_code
+    hb_size_key = 'hb_size_' + bidder_code
+    hb_pb_key = 'hb_pb_' + bidder_code
+
     if len(hb_adid_key) > 20:
       hb_adid_key = hb_adid_key[:20]
 
+    if len(hb_cache_host_key) > 20:
+      hb_cache_host_key = hb_cache_host_key[:20]
+
+    if len(hb_cache_path_key) > 20:
+      hb_cache_path_key = hb_cache_path_key[:20]
+
+    if len(hb_cache_id_key) > 20:
+      hb_cache_id_key = hb_cache_id_key[:20]
+
+    if len(hb_format_key) > 20:
+      hb_format_key = hb_format_key[:20]
+
+    if len(hb_size_key) > 20:
+      hb_size_key = hb_size_key[:20]
+
+    if len(hb_pb_key) > 20:
+      hb_pb_key = hb_pb_key[:20]
+
   snippet = snippet.replace('{hb_adid_key}', hb_adid_key)
+  snippet = snippet.replace('{hb_cache_host_key}', hb_cache_host_key)
+  snippet = snippet.replace('{hb_cache_path_key}', hb_cache_path_key)
+  snippet = snippet.replace('{hb_cache_id_key}', hb_cache_id_key)
+  snippet = snippet.replace('{hb_format_key}', hb_format_key)
+  snippet = snippet.replace('{hb_size_key}', hb_size_key)
+  snippet = snippet.replace('{hb_pb_key}', hb_pb_key)
 
   # https://developers.google.com/doubleclick-publishers/docs/reference/v201908/CreativeService.Creative
   config = {

@@ -1,14 +1,20 @@
+<script src = "https://cdn.jsdelivr.net/npm/prebid-universal-creative@latest/dist/creative.js"></script>
 <script>
-var w = window;
-for (i = 0; i < 10; i++) {
-  w = w.parent;
-  if (w.pbjs) {
-    try {
-      w.pbjs.renderAd(document, '%%PATTERN:{hb_adid_key}%%');
-      break;
-    } catch (e) {
-      continue;
-    }
+  var ucTagData = {};
+  ucTagData.adServerDomain = "";
+  ucTagData.pubUrl = "%%PATTERN:url%%";
+  ucTagData.adId = "%%PATTERN:{hb_adid_key}%%";
+  ucTagData.cacheHost = "%%PATTERN:{hb_cache_host_key}%%";
+  ucTagData.cachePath = "%%PATTERN:{hb_cache_path_key}%%";
+  ucTagData.uuid = "%%PATTERN:{hb_cache_id_key}%%";
+  ucTagData.mediaType = "%%PATTERN:{hb_format_key}%%";
+  ucTagData.env = "%%PATTERN:hb_env%%";
+  ucTagData.size = "%%PATTERN:{hb_size_key}%%";
+  ucTagData.hbPb = "%%PATTERN:{hb_pb_key}%%";
+
+  try {
+    ucTag.renderAd(document, ucTagData);
+  } catch (e) {
+    console.log(e);
   }
-}
 </script>

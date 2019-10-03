@@ -9,14 +9,14 @@ GOOGLEADS_YAML_FILE = os.path.join(ROOT_DIR, 'googleads.yaml')
 #########################################################################
 
 # A string describing the order
-DFP_ORDER_NAME = "Header Bidding (Client-Side) - Criteo"
+DFP_ORDER_NAME = "Header Bidding (Client-Side) - Sovrn"
 
 # The email of the DFP user who will be the trafficker for
 # the created order
 DFP_USER_EMAIL_ADDRESS = "vinny@launchpotato.com"
 
 # The exact name of the DFP advertiser for the created order
-DFP_ADVERTISER_NAME = "Criteo"
+DFP_ADVERTISER_NAME = "Sovrn"
 
 # Names of placements the line items should target. Has priority over ad units.
 DFP_TARGETED_PLACEMENT_NAMES = []
@@ -40,7 +40,7 @@ DFP_CREATE_ADVERTISER_IF_DOES_NOT_EXIST = True
 # If settings.DFP_ORDER_NAME is the same as an existing order, add the created 
 # line items to that order. If False, the program will exit rather than
 # modify an existing order.
-DFP_USE_EXISTING_ORDER_IF_EXISTS = False
+DFP_USE_EXISTING_ORDER_IF_EXISTS = True
 
 # Optional
 # Each line item should have at least as many creatives as the number of 
@@ -67,7 +67,7 @@ DFP_USE_EXISTING_ORDER_IF_EXISTS = False
 # PREBID SETTINGS
 #########################################################################
 
-PREBID_BIDDER_CODE = "criteo"
+PREBID_BIDDER_CODE = "sovrn"
 
 # Whether DFP targeting keys should be created following Bidders' Params structure.
 # This is used when it's required to send all bids to the ad server.
@@ -79,12 +79,12 @@ PREBID_BIDDER_PARAMS = True
 # http://prebid.org/dev-docs/publisher-api-reference.html#module_pbjs.setPriceGranularity
 # FIXME: this should be an array of buckets. See:
 # https://github.com/prebid/Prebid.js/blob/8fed3d7aaa814e67ca3efc103d7d306cab8c692c/src/cpmBucketManager.js
-PREBID_PRICE_BUCKETS = {
-    'precision': 2,
-    'min' : 0,
-    'max' : 5,
-    'increment': 0.05,
-  }
+# PREBID_PRICE_BUCKETS = {
+#     'precision': 2,
+#     'min' : 0,
+#     'max' : 5,
+#     'increment': 0.05,
+#   }
 
 # PREBID_PRICE_BUCKETS = {
 #     'precision': 2,
@@ -93,12 +93,12 @@ PREBID_PRICE_BUCKETS = {
 #     'increment': 0.10,
 #   }
 
-# PREBID_PRICE_BUCKETS = {
-#     'precision': 2,
-#     'min' : 10.50,
-#     'max' : 20,
-#     'increment': 0.50,
-#   }
+PREBID_PRICE_BUCKETS = {
+    'precision': 2,
+    'min' : 10.50,
+    'max' : 20,
+    'increment': 0.50,
+  }
 
 #########################################################################
 
