@@ -9,14 +9,14 @@ GOOGLEADS_YAML_FILE = os.path.join(ROOT_DIR, 'googleads.yaml')
 #########################################################################
 
 # A string describing the order
-DFP_ORDER_NAME = None
+DFP_ORDER_NAME = "Header Bidding (Client-Side) - Criteo"
 
 # The email of the DFP user who will be the trafficker for
 # the created order
-DFP_USER_EMAIL_ADDRESS = None
+DFP_USER_EMAIL_ADDRESS = "vinny@launchpotato.com"
 
 # The exact name of the DFP advertiser for the created order
-DFP_ADVERTISER_NAME = None
+DFP_ADVERTISER_NAME = "Criteo"
 
 # Names of placements the line items should target. Has priority over ad units.
 DFP_TARGETED_PLACEMENT_NAMES = []
@@ -24,22 +24,18 @@ DFP_TARGETED_PLACEMENT_NAMES = []
 # Sizes of placements. These are used to set line item and creative sizes.
 DFP_PLACEMENT_SIZES = [
   {
-    'width': '300',
-    'height': '250'
-  },
-  {
-    'width': '728',
-    'height': '90'
+    'width': '1',
+    'height': '1'
   },
 ]
 
 # If no placement should be used, for example for a run of network. If True, 
 # DFP_TARGETED_PLACEMENT_NAMES still need to be set to an empty array.
-DFP_ALLOW_NO_INVENTORY_TARGETING = False
+DFP_ALLOW_NO_INVENTORY_TARGETING = True
 
 # Whether we should create the advertiser in DFP if it does not exist.
 # If False, the program will exit rather than create an advertiser.
-DFP_CREATE_ADVERTISER_IF_DOES_NOT_EXIST = False
+DFP_CREATE_ADVERTISER_IF_DOES_NOT_EXIST = True
 
 # If settings.DFP_ORDER_NAME is the same as an existing order, add the created 
 # line items to that order. If False, the program will exit rather than
@@ -71,24 +67,38 @@ DFP_USE_EXISTING_ORDER_IF_EXISTS = False
 # PREBID SETTINGS
 #########################################################################
 
-PREBID_BIDDER_CODE = None
+PREBID_BIDDER_CODE = "criteo"
 
 # Whether DFP targeting keys should be created following Bidders' Params structure.
 # This is used when it's required to send all bids to the ad server.
 # See: http://prebid.org/dev-docs/bidders.html
 # And: http://prebid.org/adops/send-all-bids-adops.html
-PREBID_BIDDER_PARAMS = False
+PREBID_BIDDER_PARAMS = True
 
 # Price buckets. This should match your Prebid settings for the partner. See:
 # http://prebid.org/dev-docs/publisher-api-reference.html#module_pbjs.setPriceGranularity
 # FIXME: this should be an array of buckets. See:
 # https://github.com/prebid/Prebid.js/blob/8fed3d7aaa814e67ca3efc103d7d306cab8c692c/src/cpmBucketManager.js
 PREBID_PRICE_BUCKETS = {
-  'precision': 2,
-  'min' : 0,
-  'max' : 20,
-  'increment': 0.10,
-}
+    'precision': 2,
+    'min' : 0,
+    'max' : 5,
+    'increment': 0.05,
+  }
+
+# PREBID_PRICE_BUCKETS = {
+#     'precision': 2,
+#     'min' : 5.10,
+#     'max' : 10,
+#     'increment': 0.10,
+#   }
+
+# PREBID_PRICE_BUCKETS = {
+#     'precision': 2,
+#     'min' : 10.50,
+#     'max' : 20,
+#     'increment': 0.50,
+#   }
 
 #########################################################################
 

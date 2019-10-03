@@ -15,7 +15,7 @@ def create_line_items(line_items):
     an array: an array of created line item IDs
   """
   dfp_client = get_client()
-  line_item_service = dfp_client.GetService('LineItemService', version='v201802')
+  line_item_service = dfp_client.GetService('LineItemService', version='v201908')
   line_items = line_item_service.createLineItems(line_items)
 
   # Return IDs of created line items.
@@ -54,7 +54,7 @@ def create_line_item_config(name, order_id, placement_ids, cpm_micro_amount,
     })
 
   # Create key/value targeting for Prebid.
-  # https://github.com/googleads/googleads-python-lib/blob/master/examples/dfp/v201802/line_item_service/target_custom_criteria.py
+  # https://github.com/googleads/googleads-python-lib/blob/master/examples/dfp/v201908/line_item_service/target_custom_criteria.py
   # create custom criterias
 
   inventory = {
@@ -96,11 +96,11 @@ def create_line_item_config(name, order_id, placement_ids, cpm_micro_amount,
     'children': children
   }
 
-  # https://developers.google.com/doubleclick-publishers/docs/reference/v201802/LineItemService.LineItem
+  # https://developers.google.com/doubleclick-publishers/docs/reference/v201908/LineItemService.LineItem
   line_item_config = {
     'name': name,
     'orderId': order_id,
-    # https://developers.google.com/doubleclick-publishers/docs/reference/v201802/LineItemService.Targeting
+    # https://developers.google.com/doubleclick-publishers/docs/reference/v201908/LineItemService.Targeting
     'targeting': {
       'inventoryTargeting': inventory,
       'customTargeting': top_set,

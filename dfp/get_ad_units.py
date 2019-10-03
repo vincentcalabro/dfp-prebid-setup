@@ -24,7 +24,7 @@ def get_all_ad_units(print_ad_units=False):
   dfp_client = get_client()
 
   # Initialize appropriate service.
-  ad_unit_service = dfp_client.GetService('InventoryService', version='v201802')
+  ad_unit_service = dfp_client.GetService('InventoryService', version='v201908')
 
   # Create a statement to select ad units.
   statement = dfp.StatementBuilder()
@@ -53,7 +53,7 @@ def get_root_ad_unit_id():
   """
 
   dfp_client = get_client()
-  network_service = dfp_client.GetService('NetworkService', version='v201802')
+  network_service = dfp_client.GetService('NetworkService', version='v201908')
   current_network = network_service.getCurrentNetwork()
 
   if hasattr(current_network, 'effectiveRootAdUnitId'):
