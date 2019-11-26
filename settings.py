@@ -9,24 +9,37 @@ GOOGLEADS_YAML_FILE = os.path.join(ROOT_DIR, 'googleads.yaml')
 #########################################################################
 
 # A string describing the order
-DFP_ORDER_NAME = "Header Bidding (Client-Side) - Sovrn"
+DFP_ORDER_NAME = "Header Bidding (Client-Side) - OpenX"
 
 # The email of the DFP user who will be the trafficker for
 # the created order
 DFP_USER_EMAIL_ADDRESS = "vinny@launchpotato.com"
 
 # The exact name of the DFP advertiser for the created order
-DFP_ADVERTISER_NAME = "Sovrn"
+DFP_ADVERTISER_NAME = "OpenX"
+
+# The names of GAM ad units the line items should target
+DFP_TARGETED_AD_UNIT_NAMES = ["pg_prizes_processing_1", "pg_prizes_processing_2"]
 
 # Names of placements the line items should target. Has priority over ad units.
-DFP_TARGETED_PLACEMENT_NAMES = []
+DFP_TARGETED_PLACEMENT_NAMES = ["ALL AD UNITS"]
 
 # Sizes of placements. These are used to set line item and creative sizes.
 DFP_PLACEMENT_SIZES = [
-  {
-    'width': '1',
-    'height': '1'
-  },
+  { 'width': '970', 'height': '250' },
+  { 'width': '728', 'height': '90' },
+  { 'width': '160', 'height': '600' },
+  { 'width': '300', 'height': '600' },
+  { 'width': '320', 'height': '50' },
+  { 'width': '336', 'height': '280' },
+  { 'width': '300', 'height': '250' },
+  { 'width': '320', 'height': '100' },
+  { 'width': '970', 'height': '90' },
+  { 'width': '970', 'height': '60' },
+  { 'width': '250', 'height': '250' },
+  { 'width': '200', 'height': '200' },
+  { 'width': '468', 'height': '60' },
+  { 'width': '120', 'height': '600' },
 ]
 
 # If no placement should be used, for example for a run of network. If True, 
@@ -67,7 +80,7 @@ DFP_USE_EXISTING_ORDER_IF_EXISTS = True
 # PREBID SETTINGS
 #########################################################################
 
-PREBID_BIDDER_CODE = "sovrn"
+PREBID_BIDDER_CODE = "openx"
 
 # Whether DFP targeting keys should be created following Bidders' Params structure.
 # This is used when it's required to send all bids to the ad server.
@@ -81,7 +94,7 @@ PREBID_BIDDER_PARAMS = True
 # https://github.com/prebid/Prebid.js/blob/8fed3d7aaa814e67ca3efc103d7d306cab8c692c/src/cpmBucketManager.js
 # PREBID_PRICE_BUCKETS = {
 #     'precision': 2,
-#     'min' : 0,
+#     'min' : 0.05,
 #     'max' : 5,
 #     'increment': 0.05,
 #   }

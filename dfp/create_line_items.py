@@ -24,7 +24,7 @@ def create_line_items(line_items):
     created_line_item_ids.append(line_item['id'])
   return created_line_item_ids
 
-def create_line_item_config(name, order_id, placement_ids, cpm_micro_amount,
+def create_line_item_config(name, order_id, placement_ids, ad_unit_ids, cpm_micro_amount,
   sizes, hb_bidder_key_id, hb_pb_key_id, hb_bidder_value_id, hb_pb_value_id,
   currency_code='USD', root_ad_unit_id=None):
   """
@@ -34,6 +34,7 @@ def create_line_item_config(name, order_id, placement_ids, cpm_micro_amount,
     name (str): the name of the line item
     order_id (int): the ID of the order in DFP
     placement_ids (arr): an array of DFP placement IDs to target
+    ad_unit_ids (arr): an array of DFP ad unit IDs to target
     cpm_micro_amount (int): the currency value (in micro amounts) of the
       line item
     sizes (arr): an array of objects, each containing 'width' and 'height'
@@ -102,7 +103,7 @@ def create_line_item_config(name, order_id, placement_ids, cpm_micro_amount,
     'orderId': order_id,
     # https://developers.google.com/doubleclick-publishers/docs/reference/v201908/LineItemService.Targeting
     'targeting': {
-      'inventoryTargeting': inventory,
+      'inventoryTargeting': {},
       'customTargeting': top_set,
     },
     'startDateTimeType': 'IMMEDIATELY',
@@ -119,4 +120,9 @@ def create_line_item_config(name, order_id, placement_ids, cpm_micro_amount,
     },
     'creativePlaceholders': creative_placeholders,
   }
+  if placement_ids is not None:
+    line_item_config['targeting']['inventoryTargeting']['targetedPlacementIds'] = placement_ids
+
+  if ad_unit_ids is not None:
+    line_item_config['targeting']['inventoryTargeting']['targetedAdUnits'] = [{'adUnitId': id} for id in ad_unit_ids]
   return line_item_config
